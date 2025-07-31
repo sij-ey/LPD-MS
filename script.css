@@ -1,0 +1,145 @@
+ :root {
+            --primary-color: #2a7f3f; /* Farm green */
+            --secondary-color: #f8f9fa;
+            --accent-color: #f5a623; /* Warning orange */
+            --danger-color: #e74c3c; /* Alert red */
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .card {
+            transition: transform 0.3s;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #247a3d;
+            border-color: #247a3d;
+        }
+        
+        .btn-warning {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .animal-selector {
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .animal-selector:hover {
+            transform: scale(1.05);
+        }
+        
+        .animal-selector.active {
+            border: 3px solid var(--primary-color);
+            background-color: rgba(42, 127, 63, 0.1);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .map-container {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        #veterinarianMap {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .disease-card {
+            border-left: 4px solid var(--danger-color);
+        }
+        
+        .prevention-card {
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .pest-card {
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .emergency-banner {
+            background-color: var(--danger-color);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .symptom-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .treatment-protocol {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        .risk-high {
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+        
+        .risk-medium {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .risk-low {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .alert-item {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 15px;
+        }

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PestFree Livestock - Disease & Pest Management for Farmers</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS & JS file-->
+    <link rel="stylesheet" href="script.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="API Icon" width="24" height="24" >LPD Management System
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#vets">Emergency Vets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#diseases">Diseases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pests">Pests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#prevention">Prevention</a>
+                    </li>
+                </ul>
+            </div>
+             <div class="d-flex">
+                <button class="btn btn-outline-light ms-lg-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="fas fa-user me-1"></i> Farmer Login
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Protect Your Livestock from Pests & Diseases</h1>
+            <p class="lead mb-5">Early detection, prevention, and quick access to veterinary information for Kenyan farmers</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#diseases" class="btn btn-primary btn-lg px-4">
+                    <i class="fas fa-bug me-2"></i> Identify Problem
+                </a>
+          
+            </div>
+        </div>
+    </section>
+
+    <!-- Disease Alerts Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Current Disease Alerts</h2>
+                <p class="lead text-muted">Recent outbreaks in your region</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="alert-item">
+                        <h4>East Coast Fever <span class="badge bg-danger">High Risk</span></h4>
+                        <p class="mb-1">Reported in Nakuru County</p>
+                        <small class="text-muted">Last reported: 2 days ago</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="alert-item">
+                        <h4>Newcastle Disease <span class="badge bg-warning">Medium Risk</span></h4>
+                        <p class="mb-1">Reported in Kiambu County</p>
+                        <small class="text-muted">Last reported: 1 week ago</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="alert-item">
+                        <h4>Lumpy Skin Disease <span class="badge bg-danger">High Risk</span></h4>
+                        <p class="mb-1">Reported in Nairobi County</p>
+                        <small class="text-muted">Last reported: 3 days ago</small>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="#" class="btn btn-outline-primary">View All Alerts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Find Veterinarian Section -->
+    <section id="vets" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Emergency Veterinary Contacts</h2>
+                <p class="lead text-muted">Immediate help for your livestock</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card p-4">
+                        <h3 class="mb-4">Find Nearest Veterinarian</h3>
+                        <form id="vetSearchForm">
+                            <div class="mb-3">
+                                <label for="county" class="form-label">County</label>
+                                <select class="form-select" id="county" required>
+                                    <option value="" selected disabled>Select your county</option>
+                                    <option value="nairobi">Nairobi</option>
+                                    <option value="kiambu">Kiambu</option>
+                                    <option value="nakuru">Nakuru</option>
+                                    <option value="kisumu">Kisumu</option>
+                                    <option value="mombasa">Mombasa</option>
+                                    <option value="meru">Meru</option>
+                                    <option value="kakamega">Kakamega</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="animalType" class="form-label">Animal Type</label>
+                                <select class="form-select" id="animalType" required>
+                                    <option value="" selected disabled>Select animal type</option>
+                                    <option value="cattle">Cattle</option>
+                                    <option value="poultry">Poultry</option>
+                                    <option value="goats">Goats</option>
+                                    <option value="sheep">Sheep</option>
+                                    <option value="pigs">Pigs</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="emergencyOnly">
+                                <label class="form-check-label" for="emergencyOnly">24/7 Emergency Services Only</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-search me-2"></i> Find Vets
+                            </button>
+                        </form>
+                        
+                        <div class="emergency-banner mt-4">
+                            <h4><i class="fas fa-exclamation-triangle me-2"></i>Emergency Hotlines</h4>
+                            <p class="mb-1">National Veterinary Service: <strong>0800 720 220</strong></p>
+                            <p>Animal Disease Hotline: <strong>0800 721 221</strong></p>
+                        </div>
+                    </div>
+                </div>
+               
+                </div>
+            </div>
+    </section>
+
+    <!-- Disease Identification Section -->
+    <section id="diseases" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Livestock Disease Identification</h2>
+                <p class="lead text-muted">Recognize symptoms and find treatments</p>
+            </div>
+            
+            <div class="text-center mb-4">
+                <h4>Select Your Animal</h4>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <div class="animal-selector p-3 rounded-3 text-center" data-animal="cattle">
+                        <i class="fas fa-cow fa-3x mb-2"></i>
+                        <p class="mb-0 fw-bold">Cattle</p>
+                    </div>
+                    <div class="animal-selector p-3 rounded-3 text-center" data-animal="poultry">
+                        <i class="fas fa-kiwi-bird fa-3x mb-2"></i>
+                        <p class="mb-0 fw-bold">Poultry</p>
+                    </div>
+                    <div class="animal-selector p-3 rounded-3 text-center" data-animal="goats">
+                        <i class="fas fa-goat fa-3x mb-2"></i>
+                        <p class="mb-0 fw-bold">Goats</p>
+                    </div>
+                    <div class="animal-selector p-3 rounded-3 text-center" data-animal="sheep">
+                        <i class="fas fa-sheep fa-3x mb-2"></i>
+                        <p class="mb-0 fw-bold">Sheep</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card disease-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h4>East Coast Fever (ECF)</h4>
+                                <span class="badge bg-danger">High Risk</span>
+                            </div>
+                            <p class="text-muted">Affects: Cattle</p>
+                            
+                            <h5 class="mt-3">Symptoms</h5>
+                            <div class="symptom-list">
+                                <div class="symptom-item">High fever (104-107°F)</div>
+                                <div class="symptom-item">Swollen lymph nodes</div>
+                                <div class="symptom-item">Difficulty breathing</div>
+                                <div class="symptom-item">Loss of appetite</div>
+                                <div class="symptom-item">Watery eyes and nasal discharge</div>
+                            </div>
+                            
+                            <h5 class="mt-3">Treatment Protocol</h5>
+                            <div class="treatment-protocol">
+                                <ol>
+                                    <li>Immediately isolate affected animal</li>
+                                    <li>Contact veterinarian for specific treatment</li>
+                                    <li>Buparvaquone injections (prescription required)</li>
+                                    <li>Supportive care with fluids and anti-inflammatory drugs</li>
+                                </ol>
+                                <p class="mb-0"><strong>Mortality Rate:</strong> 30-100% if untreated</p>
+                            </div>
+                            
+                            <button class="btn btn-primary mt-3">
+                                <i class="fas fa-book-medical me-2"></i> Full Treatment Guide
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card disease-card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h4>Newcastle Disease</h4>
+                                <span class="badge bg-warning">Medium Risk</span>
+                            </div>
+                            <p class="text-muted">Affects: Poultry</p>
+                            
+                            <h5 class="mt-3">Symptoms</h5>
+                            <div class="symptom-list">
+                                <div class="symptom-item">Sneezing, coughing, nasal discharge</div>
+                                <div class="symptom-item">Greenish, watery diarrhea</div>
+                                <div class="symptom-item">Depression, loss of appetite</div>
+                                <div class="symptom-item">Nervous signs (tremors, paralysis)</div>
+                                <div class="symptom-item">Sudden death in severe cases</div>
+                            </div>
+                            
+                            <h5 class="mt-3">Treatment Protocol</h5>
+                            <div class="treatment-protocol">
+                                <ol>
+                                    <li>No specific treatment for virus</li>
+                                    <li>Isolate and humanely cull infected birds</li>
+                                    <li>Vaccinate healthy birds (I2 or Lasota vaccine)</li>
+                                    <li>Disinfect housing and equipment thoroughly</li>
+                                </ol>
+                                <p class="mb-0"><strong>Mortality Rate:</strong> Up to 100% in unvaccinated flocks</p>
+                            </div>
+                            
+                            <button class="btn btn-primary mt-3">
+                                <i class="fas fa-book-medical me-2"></i> Full Treatment Guide
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">View All Cattle Diseases</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pest Management Section -->
+    <section id="pests" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Pest Control Solutions</h2>
+                <p class="lead text-muted">Protect your livestock from parasites and pests</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card pest-card">
+                        <div class="card-body">
+                            <h4>Ticks</h4>
+                            <p class="text-muted">Affects: Cattle, Goats, Sheep</p>
+                            
+                            <h5 class="mt-3">Signs of Infestation</h5>
+                            <ul>
+                                <li>Visible ticks on skin (ears, udder, tail)</li>
+                                <li>Anemia (pale gums, weakness)</li>
+                                <li>Skin damage and irritation</li>
+                                <li>Reduced milk production</li>
+                            </ul>
+                            
+                            <h5 class="mt-3">Control Methods</h5>
+                            <ul>
+                                <li>Regular acaricide dipping/spraying</li>
+                                <li>Rotational grazing</li>
+                                <li>Manual removal with gloves</li>
+                                <li>Biological control (chickens, guinea fowl)</li>
+                            </ul>
+                            
+                            <div class="d-grid mt-3">
+                                <button class="btn btn-outline-warning">
+                                    <i class="fas fa-spray-can me-2"></i> Recommended Acaricides
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card pest-card">
+                        <div class="card-body">
+                            <h4>Mites & Lice</h4>
+                            <p class="text-muted">Affects: Poultry, Cattle, Goats</p>
+                            
+                            <h5 class="mt-3">Signs of Infestation</h5>
+                            <ul>
+                                <li>Feather/skin damage and loss</li>
+                                <li>Excessive scratching and rubbing</li>
+                                <li>Restlessness, reduced productivity</li>
+                                <li>Visible parasites at base of feathers/hair</li>
+                            </ul>
+                            
+                            <h5 class="mt-3">Control Methods</h5>
+                            <ul>
+                                <li>Dusting with approved insecticides</li>
+                                <li>Spraying with pyrethroid-based products</li>
+                                <li>Clean and disinfect housing regularly</li>
+                                <li>Provide dust baths for poultry</li>
+                            </ul>
+                            
+                            <div class="d-grid mt-3">
+                                <button class="btn btn-outline-warning">
+                                    <i class="fas fa-spray-can me-2"></i> Recommended Treatments
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card pest-card">
+                        <div class="card-body">
+                            <h4>Tsetse Flies</h4>
+                            <p class="text-muted">Affects: Cattle, Goats, Pigs</p>
+                            
+                            <h5 class="mt-3">Signs of Infestation</h5>
+                            <ul>
+                                <li>Visible flies biting animals</li>
+                                <li>Transmit trypanosomiasis (nagana)</li>
+                                <li>Anemia, weight loss, reduced productivity</li>
+                                <li>Swollen lymph nodes</li>
+                            </ul>
+                            
+                            <h5 class="mt-3">Control Methods</h5>
+                            <ul>
+                                <li>Use of insecticide-treated screens/traps</li>
+                                <li>Pour-on insecticides</li>
+                                <li>Bush clearing around homesteads</li>
+                                <li>Sterile insect technique (government programs)</li>
+                            </ul>
+                            
+                            <div class="d-grid mt-3">
+                                <button class="btn btn-outline-warning">
+                                    <i class="fas fa-spray-can me-2"></i> Recommended Repellents
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-primary">View All Pest Control Methods</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prevention Section -->
+    <section id="prevention" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Prevention Strategies</h2>
+                <p class="lead text-muted">Proactive measures to protect your livestock</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card prevention-card">
+                        <div class="card-body">
+                            <h4>Vaccination Schedule</h4>
+                            <p>Follow this recommended vaccination timeline for your livestock:</p>
+                            
+                            <h5 class="mt-3">Cattle</h5>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Disease</th>
+                                        <th>First Dose</th>
+                                        <th>Boosters</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>East Coast Fever</td>
+                                        <td>3 months</td>
+                                        <td>Annual</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Foot and Mouth</td>
+                                        <td>4 months</td>
+                                        <td>Every 6 months</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Anthrax</td>
+                                        <td>6 months</td>
+                                        <td>Annual</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <h5 class="mt-3">Poultry</h5>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Disease</th>
+                                        <th>First Dose</th>
+                                        <th>Boosters</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Newcastle</td>
+                                        <td>Day 1</td>
+                                        <td>Every 3 months</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gumboro</td>
+                                        <td>2 weeks</td>
+                                        <td>Every 2 months</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card prevention-card">
+                        <div class="card-body">
+                            <h4>Biosecurity Measures</h4>
+                            <p>Essential practices to prevent disease introduction and spread:</p>
+                            
+                            <div class="accordion mt-3" id="biosecurityAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                            Farm Entry Protocols
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#biosecurityAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li>Disinfectant foot baths at all entry points</li>
+                                                <li>Restrict visitor access to animal areas</li>
+                                                <li>Clean clothing and boots for workers</li>
+                                                <li>Vehicle disinfection when entering</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                            New Animal Introduction
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#biosecurityAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li>Quarantine new animals for 30 days</li>
+                                                <li>Test for major diseases before introduction</li>
+                                                <li>Vaccinate before mixing with herd/flock</li>
+                                                <li>Observe for signs of illness</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                            Sanitation Practices
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#biosecurityAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li>Daily removal of manure and soiled bedding</li>
+                                                <li>Weekly disinfection of housing</li>
+                                                <li>Proper disposal of dead animals</li>
+                                                <li>Clean feeders and waterers daily</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5 class="mt-4">Pest Control Schedule</h5>
+                            <ul>
+                                <li><strong>Monthly:</strong> Spray/dip for ticks and flies</li>
+                                <li><strong>Quarterly:</strong> Deworm all animals</li>
+                                <li><strong>Seasonal:</strong> Control mosquitoes and biting flies</li>
+                                <li><strong>As needed:</strong> Rodent control measures</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!--   <!-- Success Stories Section --
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Farmer Success Stories</h2>
+                <p class="lead text-muted">How PestFree helped improve their livestock health</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="rounded-circle mb-3" width="100" alt="Farmer">
+                            <h4>Mary Wanjiku</h4>
+                            <p class="text-muted">Dairy Farmer, Kiambu</p>
+                            <p>"After using the vaccination reminders and connecting with a vet through PestFree, my milk production increased by 30% with fewer sick cows."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mb-3" width="100" alt="Farmer">
+                            <h4>James Mwangi</h4>
+                            <p class="text-muted">Poultry Farmer, Nakuru</p>
+                            <p>"The early alert about Newcastle disease in our area saved my entire flock. I was able to vaccinate in time thanks to PestFree."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" class="rounded-circle mb-3" width="100" alt="Farmer">
+                            <h4>Grace Atieno</h4>
+                            <p class="text-muted">Goat Farmer, Kisumu</p>
+                            <p>"The tick control methods recommended here reduced infestations by 90%. My goats are healthier and fetch better market prices now."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>      -->
+    
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-white mb-4">
+                        <i class="fas fa-shield-alt me-2"></i> PestFree Livestock
+                    </h5>
+                    <p class="text-white-50">Empowering Kenyan farmers with livestock health knowledge and veterinary connections to combat pests and diseases.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50">Home</a></li>
+                        <li class="mb-2"><a href="#vets" class="text-white-50">Emergency Vets</a></li>
+                        <li class="mb-2"><a href="#diseases" class="text-white-50">Diseases</a></li>
+                        <li class="mb-2"><a href="#pests" class="text-white-50">Pests</a></li>
+                        <li class="mb-2"><a href="#prevention" class="text-white-50">Prevention</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-white mb-4">Contact Us</h5>
+                    <ul class="list-unstyled text-white-50">
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +254 700 123456</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> help@pestfreelivestock.co.ke</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Nairobi, Kenya</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Follow Us</h5>
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
+                    </div>
+                    <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#subscribeModal">
+                        <i class="fas fa-bell me-2"></i> Get Disease Alerts
+                    </button>
+                </div>
+            </div>
+            <hr class="my-4 bg-white-50">
+            <div class="text-center text-white-50">
+                <p class="mb-0">&copy; 2023 PestFree Livestock. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Farmer Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="login.php" method="POST">
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="loginPhone" name="phone" placeholder="e.g. 0712345678" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" name="password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="mb-1">Don't have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a></p>
+                        <p><a href="#">Forgot password?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Farmer Registration</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="register.php" method="POST">
+                        <div class="mb-3">
+                            <label for="regName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="regName" name="name" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="regPhone" name="phone" placeholder="e.g. 0712345678" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regCounty" class="form-label">County</label>
+                            <select class="form-select" id="regCounty" name="county" required>
+                                <option selected disabled>Select your county</option>
+                                <option>Nairobi</option>
+                                <option>Kiambu</option>
+                                <option>Nakuru</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Livestock Types</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="regCattle">
+                                <label class="form-check-label" for="regCattle">Cattle</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="regPoultry">
+                                <label class="form-check-label" for="regPoultry">Poultry</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="regGoats">
+                                <label class="form-check-label" for="regGoats">Goats/Sheep</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="regPigs">
+                                <label class="form-check-label" for="regPigs">Pigs</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="regPassword" name="password" placeholder="Create a password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="regConfirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="regConfirmPassword">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subscribe Modal -->
+    <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="subscribeModalLabel">Subscribe to Alerts</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Get disease outbreak alerts, prevention tips, and veterinary service updates delivered to your phone.</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="subName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="subName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="subPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="subPhone" placeholder="e.g. 0712345678">
+                        </div>
+                        <div class="mb-3">
+                            <label for="subCounty" class="form-label">County</label>
+                            <select class="form-select" id="subCounty">
+                                <option selected disabled>Select your county</option>
+                                <option>Nairobi</option>
+                                <option>Kiambu</option>
+                                <option>Nakuru</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Alert Preferences</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="subDiseaseAlerts" checked>
+                                <label class="form-check-label" for="subDiseaseAlerts">Disease Outbreaks</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="subPreventionTips" checked>
+                                <label class="form-check-label" for="subPreventionTips">Prevention Tips</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="subVetUpdates">
+                                <label class="form-check-label" for="subVetUpdates">Veterinary Service Updates</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+   <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "fake-api-key",
+    authDomain: "localhost",
+    projectId: "lpd-1-f3f9e",
+  };
+
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  // Connect Firestore to emulator
+firebase.firestore().useEmulator('localhost', 8080);
+// Connect Auth to emulator
+firebase.auth().useEmulator('http://localhost:9099/');
+</script>
+<!-- Removed duplicate firebaseConfig declaration to fix redeclaration error -->
+</body>
+</html>
